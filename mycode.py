@@ -224,8 +224,8 @@ last_nan_index_MA = KBar_df['MA_long'][::-1].index[KBar_df['MA_long'][::-1].appl
 #### 順勢策略
 ### 設定長短 RSI 的 K棒 長度:
 st.sidebar.subheader("設定RSI的K棒數目")
-LongRSIPeriod=st.sidebar.slider('設定計算長RSI的 K 棒數目', 0, 1000, 0)
-ShortRSIPeriod=st.sidebar.slider('設定計算短RSI的 K 棒數目', 0, 1000, 0)
+LongRSIPeriod=st.sidebar.slider('設定計算長RSI的 K 棒數目', 0, 500, 0)
+ShortRSIPeriod=st.sidebar.slider('設定計算短RSI的 K 棒數目', 0, 500, 0)
 
 ### 計算 RSI指標長短線, 以及定義中線
 ## 假设 df 是一个包含价格数据的Pandas DataFrame，其中 'close' 是KBar週期收盤價
@@ -328,7 +328,7 @@ st.sidebar.subheader("設定布林通道和唐琪安通道的K棒數目")
 dc_window = st.sidebar.slider('輸入計算唐琪安通道的K棒數目', 0, 100, 0, key="dc_slider")
 
 # 設定計算布林通道的窗口大小
-bb_window = st.sidebar.slider('輸入計算布林通道的窗口大小', 0, 100, 0, key="bb_slider")
+bb_window = st.sidebar.slider('輸入計算布林通道的K棒數目', 0, 100, 0, key="bb_slider")
 
 def calculate_donchian_channel(df, window):
     df['upper_dc'] = df['Close'].rolling(window=window).max()
@@ -370,7 +370,7 @@ with st.expander("布林通道圖"):
     st.plotly_chart(fig_bb, use_container_width=True)
 
 
-st.success('全部資料下載完成，請在做手邊的欄位做K棒設定!')
+st.success('全部資料下載完成，請在左手邊的欄位做K棒數值設定!')
 
 
 
